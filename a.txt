@@ -1,0 +1,8 @@
+2021/07/08 06:47:59 --------------------------------------------------
+2021/07/08 06:47:59 	Time:		1625698079300
+2021/07/08 06:47:59 	DutyDate:	2021-07-14
+2021/07/08 06:47:59 --------------------------------------------------
+2021/07/08 06:47:59 SELECT PRODUCT:
+2021/07/08 06:47:59 
+respData:&{ResCode:0 Msg:<nil> Data:[[MORNING][(key:4212e1ce0f68f6860227920d4cc1e2bbbac6f01e, name:, title:普通门诊, wnumber:3) (key:0b153d9e24e0279dc0675394251100825238f4df, name:徐艳, title:知名专家, wnumber:20)] [AFTERNOON][(key:392539f155cb5dd2340eee3d073c8bc8c3b7042e, name:, title:普通门诊, wnumber:13) (key:d2b9a097c228370f35c84dd6bd69f229e9521fc4, name:徐艳, title:知名专家, wnumber:18) (key:ea79baf0a4d8ad52a4d05f595ea430a6dba0a8a3, name:, title:副主任医师, wnumber:32)]]}
+
