@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"sync/atomic"
 	"time"
 )
 
@@ -23,6 +24,18 @@ func (t *TerminalAndFile) Write(p []byte) (n int, err error) {
 	return os.Stdout.Write(p)
 }
 
+type SessionData struct {
+	canLoaded int32
+}
+
+func (s *SessionData) CandidatesGot() bool {
+	return atomic.LoadInt32(&s.canLoaded) > 0
+}
+
+func (s *SessionData) SetCandidateGot() {
+	atomic.AddInt32(&s.canLoaded, 1)
+}
+
 func main() {
 	_7pre := get7Pre3Second()
 	t := time.Unix(_7pre, 0)
@@ -38,38 +51,53 @@ func main() {
 	log.Printf("--------------------------------------------------\n")
 	log.Printf("SELECT PRODUCT:\n")
 	dutyDate := getDutyDate()
-	candidates := getProductDetail(dutyDate)
-	retryTimes := 0
-	for len(candidates) == 0 {
-		retryTimes++
-		time.Sleep(time.Millisecond * 100)
-		log.Printf("--------------------------------------------------\n")
-		log.Printf("retry:%d", retryTimes)
-		candidates = getProductDetail(dutyDate)
-	}
+	sd := &SessionData{}
+	candidates := getCandidates(sd, dutyDate)
 	log.Printf("--------------------------------------------------\n")
-	if len(candidates) > 0 {
-		for _, can := range candidates {
-			log.Printf("\tDOCTOR:	%s\n", can.DoctorName)
-			log.Printf("\tTITLE	:	%s\n", can.DoctorTitleName)
-			if sendVerifyCode(can.UniqProductKey, dutyDate) {
-				log.Printf("--------------------------------------------------\n")
-				log.Printf("WAIT VERIFY CODE:\n")
-				var verifyCode int64
-				fmt.Scanln(&verifyCode)
-				if verifyCode > 0 {
-					log.Printf("YOUR VERIFY CODE:%d\n", verifyCode)
-					if !order(verifyCode, dutyDate, can.UniqProductKey) {
-						log.Printf("PRODUCT ORDERED!")
-						break
-					} else {
-						log.Printf("PRODUCT ORDER FAILED!")
-					}
+	sd.SetCandidateGot()
+	for _, can := range candidates {
+		log.Printf("\tDOCTOR:	%s\n", can.DoctorName)
+		log.Printf("\tTITLE	:	%s\n", can.DoctorTitleName)
+		if sendVerifyCode(can.UniqProductKey, dutyDate) {
+			log.Printf("--------------------------------------------------\n")
+			log.Printf("WAIT VERIFY CODE:\n")
+			var verifyCode int64
+			fmt.Scanln(&verifyCode)
+			if verifyCode > 0 {
+				log.Printf("YOUR VERIFY CODE:%d\n", verifyCode)
+				if !order(verifyCode, dutyDate, can.UniqProductKey) {
+					log.Printf("PRODUCT ORDERED!")
+					break
+				} else {
+					log.Printf("PRODUCT ORDER FAILED!")
 				}
-			} else {
-				log.Printf("--------------------------------------------------\n")
 			}
+		} else {
+			log.Printf("--------------------------------------------------\n")
 		}
 	}
 	log.Printf("EXIST...\n")
+}
+
+func getCandidates(sd *SessionData, dutyDate string) []*ProductDetail {
+	canChan := make(chan []*ProductDetail, 10)
+
+	var cans []*ProductDetail
+	gcount := 0
+	for len(cans) == 0 {
+		go func() {
+			gcount++
+			log.Printf("start new goroutine, total:%d\n", gcount)
+			candidates := getProductDetail(sd, dutyDate)
+			canChan <- candidates
+		}()
+
+		select {
+		case cans = <-canChan:
+			break
+		case <-time.After(500 * time.Millisecond):
+			break
+		}
+	}
+	return cans
 }

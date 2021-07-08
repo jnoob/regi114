@@ -8,7 +8,14 @@ import (
 	"net/http"
 )
 
-func getProductDetail(dutyDate string) (candidates []*ProductDetail) {
+func getProductDetail(sd *SessionData, dutyDate string) (candidates []*ProductDetail) {
+	var logMsg string
+	defer func() {
+		if len(logMsg) > 0 && !sd.CandidatesGot() {
+			log.Print(logMsg)
+		}
+	}()
+
 	type Payload struct {
 		FirstDeptCode  string `json:"firstDeptCode"`
 		SecondDeptCode string `json:"secondDeptCode"`
@@ -24,7 +31,7 @@ func getProductDetail(dutyDate string) (candidates []*ProductDetail) {
 	}
 	payloadBytes, err := json.Marshal(data)
 	if err != nil {
-		log.Printf("failed to parse payload:%+v, err:%v\n", data, err)
+		logMsg = fmt.Sprintf("failed to parse payload:%+v, err:%v\n", data, err)
 		return
 	}
 	body := bytes.NewReader(payloadBytes)
@@ -32,7 +39,7 @@ func getProductDetail(dutyDate string) (candidates []*ProductDetail) {
 	reqUrl := fmt.Sprintf("https://www.114yygh.com/web/product/detail?_time=%s", getTime())
 	req, err := http.NewRequest("POST", reqUrl, body)
 	if err != nil {
-		log.Printf("failed to new product detail url, err:%v\n", err)
+		logMsg = fmt.Sprintf("failed to new product detail url, err:%v\n", err)
 		return
 	}
 	req.Host = "www.114yygh.com"
@@ -52,24 +59,24 @@ func getProductDetail(dutyDate string) (candidates []*ProductDetail) {
 
 	resp, err := http.DefaultClient.Do(req)
 	if err != nil {
-		log.Printf("request for product detail fail, err:%v\n", err)
+		logMsg = fmt.Sprintf("request for product detail fail, err:%v\n", err)
 		return
 	}
 	defer resp.Body.Close()
 
 	if resp.StatusCode != http.StatusOK {
-		log.Printf("Request not ok! status:%v\n", resp.StatusCode)
+		logMsg = fmt.Sprintf("Request not ok! status:%v\n", resp.StatusCode)
 		return
 	}
 	detail := &ProductResp{}
 	err = json.NewDecoder(resp.Body).Decode(detail)
 	if err != nil {
-		log.Printf("parse product detail fail! err:%v\n", err)
+		logMsg = fmt.Sprintf("parse product detail fail! err:%v\n", err)
 		return
 	}
-	log.Printf("\nrespData:%+v\n\n", detail)
+	logMsg = fmt.Sprintf("\nrespData:%+v\n\n", detail)
 	if len(detail.Data) == 0 {
-		log.Printf("NO PRODUCT DATA!")
+		logMsg += "\nNO PRODUCT DATA!"
 		return
 	}
 
