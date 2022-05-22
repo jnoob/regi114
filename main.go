@@ -37,6 +37,11 @@ func (s *SessionData) SetCandidateGot() {
 }
 
 func main() {
+	log.SetOutput(NewOut())
+	log.Printf("--------------------------------------------------\n")
+	log.Printf("\tTime:\t\t%s\n", getTime())
+	log.Printf("\tDutyDate:\t%s\n", getDutyDate())
+	log.Printf("--------------------------------------------------\n")
 	_7pre := get7Pre3Second()
 	t := time.Unix(_7pre, 0)
 	log.Printf("WAIT UNTIL:%v\n", t)
@@ -44,10 +49,6 @@ func main() {
 	log.Printf("Need wait:%v\n", needWait.Seconds())
 	<-time.After(needWait)
 
-	log.SetOutput(NewOut())
-	log.Printf("--------------------------------------------------\n")
-	log.Printf("\tTime:\t\t%s\n", getTime())
-	log.Printf("\tDutyDate:\t%s\n", getDutyDate())
 	log.Printf("--------------------------------------------------\n")
 	log.Printf("SELECT PRODUCT:\n")
 	dutyDate := getDutyDate()
@@ -62,7 +63,11 @@ func main() {
 			log.Printf("--------------------------------------------------\n")
 			log.Printf("WAIT VERIFY CODE:\n")
 			var verifyCode int64
-			fmt.Scanln(&verifyCode)
+			_, err := fmt.Scanln(&verifyCode)
+			for err != nil {
+				log.Printf("INVALID VERIFY CODE!WAIT VERIFY CODE:\n")
+				_, err = fmt.Scanln(&verifyCode)
+			}
 			if verifyCode > 0 {
 				log.Printf("YOUR VERIFY CODE:%d\n", verifyCode)
 				if !order(verifyCode, dutyDate, can.UniqProductKey) {
@@ -91,9 +96,17 @@ func getCandidates(sd *SessionData, dutyDate string) []*ProductDetail {
 			candidates := getProductDetail(sd, dutyDate)
 			canChan <- candidates
 		}()
+		go func() {
+			time.Sleep(time.Millisecond * 10)
+			gcount++
+			log.Printf("start new goroutine, total:%d\n", gcount)
+			candidates := getProductDetail(sd, dutyDate)
+			canChan <- candidates
+		}()
 
 		select {
 		case cans = <-canChan:
+			sd.SetCandidateGot()
 			break
 		case <-time.After(500 * time.Millisecond):
 			break

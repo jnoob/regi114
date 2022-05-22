@@ -1,118 +1,45 @@
-2021/07/08 06:59:57 --------------------------------------------------
-2021/07/08 06:59:57 	Time:		1625698797001
-2021/07/08 06:59:57 	DutyDate:	2021-07-15
-2021/07/08 06:59:57 --------------------------------------------------
-2021/07/08 06:59:57 SELECT PRODUCT:
-2021/07/08 06:59:57 start new goroutine, total:1
-2021/07/08 06:59:57 
+2021/07/15 06:57:50 --------------------------------------------------
+2021/07/15 06:57:50 	Time:		1626303470584
+2021/07/15 06:57:50 	DutyDate:	2021-07-22
+2021/07/15 06:57:50 --------------------------------------------------
+2021/07/15 06:57:50 WAIT UNTIL:2021-07-15 06:59:57 +0800 CST
+2021/07/15 06:57:50 Need wait:126.415904
+2021/07/15 06:59:57 --------------------------------------------------
+2021/07/15 06:59:57 SELECT PRODUCT:
+2021/07/15 06:59:57 start new goroutine, total:1
+2021/07/15 06:59:57 start new goroutine, total:2
+2021/07/15 06:59:57 
 respData:&{ResCode:0 Msg:<nil> Data:[]}
 
-2021/07/08 06:59:57 NO PRODUCT DATA!
-2021/07/08 06:59:57 start new goroutine, total:2
-2021/07/08 06:59:57 
-respData:&{ResCode:0 Msg:<nil> Data:[]}
 
-2021/07/08 06:59:57 NO PRODUCT DATA!
-2021/07/08 06:59:57 start new goroutine, total:3
-2021/07/08 06:59:57 
-respData:&{ResCode:0 Msg:<nil> Data:[]}
-
-2021/07/08 06:59:57 NO PRODUCT DATA!
-2021/07/08 06:59:57 start new goroutine, total:4
-2021/07/08 06:59:57 
-respData:&{ResCode:0 Msg:<nil> Data:[]}
-
-2021/07/08 06:59:57 NO PRODUCT DATA!
-2021/07/08 06:59:57 start new goroutine, total:5
-2021/07/08 06:59:57 
-respData:&{ResCode:0 Msg:<nil> Data:[]}
-
-2021/07/08 06:59:57 NO PRODUCT DATA!
-2021/07/08 06:59:57 start new goroutine, total:6
-2021/07/08 06:59:57 
-respData:&{ResCode:0 Msg:<nil> Data:[]}
-
-2021/07/08 06:59:57 NO PRODUCT DATA!
-2021/07/08 06:59:57 start new goroutine, total:7
-2021/07/08 06:59:58 
-respData:&{ResCode:0 Msg:<nil> Data:[]}
-
-2021/07/08 06:59:58 NO PRODUCT DATA!
-2021/07/08 06:59:58 start new goroutine, total:8
-2021/07/08 06:59:58 
-respData:&{ResCode:0 Msg:<nil> Data:[]}
-
-2021/07/08 06:59:58 NO PRODUCT DATA!
-2021/07/08 06:59:58 start new goroutine, total:9
-2021/07/08 06:59:58 
-respData:&{ResCode:0 Msg:<nil> Data:[]}
-
-2021/07/08 06:59:58 NO PRODUCT DATA!
-2021/07/08 06:59:58 start new goroutine, total:10
-2021/07/08 06:59:58 
-respData:&{ResCode:0 Msg:<nil> Data:[]}
-
-2021/07/08 06:59:58 NO PRODUCT DATA!
-2021/07/08 06:59:58 start new goroutine, total:11
-2021/07/08 06:59:58 
-respData:&{ResCode:0 Msg:<nil> Data:[]}
-
-2021/07/08 06:59:58 NO PRODUCT DATA!
-2021/07/08 06:59:58 start new goroutine, total:12
-2021/07/08 06:59:58 
-respData:&{ResCode:0 Msg:<nil> Data:[]}
-
-2021/07/08 06:59:58 NO PRODUCT DATA!
-2021/07/08 06:59:58 start new goroutine, total:13
-2021/07/08 06:59:58 
-respData:&{ResCode:0 Msg:<nil> Data:[]}
-
-2021/07/08 06:59:58 NO PRODUCT DATA!
-2021/07/08 06:59:58 start new goroutine, total:14
-2021/07/08 06:59:58 
-respData:&{ResCode:0 Msg:<nil> Data:[]}
-
-2021/07/08 06:59:58 NO PRODUCT DATA!
-2021/07/08 06:59:58 start new goroutine, total:15
-2021/07/08 06:59:59 
-respData:&{ResCode:0 Msg:<nil> Data:[]}
-
-2021/07/08 06:59:59 NO PRODUCT DATA!
-2021/07/08 06:59:59 start new goroutine, total:16
-2021/07/08 06:59:59 
-respData:&{ResCode:0 Msg:<nil> Data:[]}
-
-2021/07/08 06:59:59 NO PRODUCT DATA!
-2021/07/08 06:59:59 start new goroutine, total:17
-2021/07/08 06:59:59 
-respData:&{ResCode:0 Msg:<nil> Data:[]}
-
-2021/07/08 06:59:59 NO PRODUCT DATA!
-2021/07/08 06:59:59 start new goroutine, total:18
-2021/07/08 06:59:59 start new goroutine, total:19
-2021/07/08 07:00:00 start new goroutine, total:20
-2021/07/08 07:00:00 
-respData:&{ResCode:0 Msg:<nil> Data:[[MORNING][(key:60b980f3a4e8fc82030e0fda27f69d3f6e7ad4fc, name:赵扬玉, title:知名专家, wnumber:29) (key:854bf19af08edae85b5fc6ae54b2c0d536153a0d, name:, title:副主任医师, wnumber:35) (key:8d14bd46cd356f2010e0d2f96b258922ee758b71, name:, title:普通门诊, wnumber:13)] [AFTERNOON][(key:f0c4f6ad0ea8a4e64256c20520c0d4435f7555dd, name:徐艳, title:知名专家, wnumber:1) (key:647f3a538c6e2e78ebffa25d182f463b76d4b756, name:, title:普通门诊, wnumber:21)]]}
-
-2021/07/08 07:00:00 --------------------------------------------------
-2021/07/08 07:00:00 	DOCTOR:	徐艳
-2021/07/08 07:00:00 	TITLE	:	知名专家
-2021/07/08 07:00:00 resp:&{ResCode:0 Data:{EndMilliseconds:59999}}
-2021/07/08 07:00:00 --------------------------------------------------
-2021/07/08 07:00:00 WAIT VERIFY CODE:
-2021/07/08 07:00:03 
-respData:&{ResCode:0 Msg:<nil> Data:[[MORNING][(key:60b980f3a4e8fc82030e0fda27f69d3f6e7ad4fc, name:赵扬玉, title:知名专家, wnumber:31) (key:854bf19af08edae85b5fc6ae54b2c0d536153a0d, name:, title:副主任医师, wnumber:5) (key:8d14bd46cd356f2010e0d2f96b258922ee758b71, name:, title:普通门诊, wnumber:13)] [AFTERNOON][(key:f0c4f6ad0ea8a4e64256c20520c0d4435f7555dd, name:徐艳, title:知名专家, wnumber:1) (key:647f3a538c6e2e78ebffa25d182f463b76d4b756, name:, title:普通门诊, wnumber:7)]]}
-
-2021/07/08 07:00:03 
-respData:&{ResCode:0 Msg:<nil> Data:[[MORNING][(key:60b980f3a4e8fc82030e0fda27f69d3f6e7ad4fc, name:赵扬玉, title:知名专家, wnumber:5) (key:854bf19af08edae85b5fc6ae54b2c0d536153a0d, name:, title:副主任医师, wnumber:37) (key:8d14bd46cd356f2010e0d2f96b258922ee758b71, name:, title:普通门诊, wnumber:23)] [AFTERNOON][(key:f0c4f6ad0ea8a4e64256c20520c0d4435f7555dd, name:徐艳, title:知名专家, wnumber:25) (key:647f3a538c6e2e78ebffa25d182f463b76d4b756, name:, title:普通门诊, wnumber:5)]]}
-
-2021/07/08 07:00:22 YOUR VERIFY CODE:780958
-2021/07/08 07:00:23 PRODUCT ORDER FAILED!
-2021/07/08 07:00:23 	DOCTOR:	
-2021/07/08 07:00:23 	TITLE	:	副主任医师
-2021/07/08 07:00:23 resp:&{ResCode:0 Data:{EndMilliseconds:59999}}
-2021/07/08 07:00:23 --------------------------------------------------
-2021/07/08 07:00:23 WAIT VERIFY CODE:
-2021/07/08 07:00:34 YOUR VERIFY CODE:780958
-2021/07/08 07:00:34 PRODUCT ORDERED!
-2021/07/08 07:00:34 EXIST...
+NO PRODUCT DATA!
+2021/07/15 06:59:57 start new goroutine, total:3
+2021/07/15 06:59:57 start new goroutine, total:4
+2021/07/15 06:59:57 start new goroutine, total:5
+2021/07/15 06:59:57 start new goroutine, total:6
+2021/07/15 06:59:58 start new goroutine, total:7
+2021/07/15 06:59:58 start new goroutine, total:8
+2021/07/15 06:59:58 start new goroutine, total:9
+2021/07/15 06:59:58 start new goroutine, total:10
+2021/07/15 06:59:59 start new goroutine, total:11
+2021/07/15 06:59:59 start new goroutine, total:12
+2021/07/15 06:59:59 start new goroutine, total:13
+2021/07/15 06:59:59 start new goroutine, total:14
+2021/07/15 07:00:00 start new goroutine, total:15
+2021/07/15 07:00:00 start new goroutine, total:16
+2021/07/15 07:00:00 --------------------------------------------------
+2021/07/15 07:00:00 	DOCTOR:	赵扬玉
+2021/07/15 07:00:00 	TITLE	:	知名专家
+2021/07/15 07:00:00 resp:&{ResCode:0 Data:{EndMilliseconds:59998}}
+2021/07/15 07:00:00 --------------------------------------------------
+2021/07/15 07:00:00 WAIT VERIFY CODE:
+2021/07/15 07:00:27 YOUR VERIFY CODE:373468
+2021/07/15 07:00:27 PRODUCT ORDER FAILED!
+2021/07/15 07:00:27 	DOCTOR:	徐艳
+2021/07/15 07:00:27 	TITLE	:	知名专家
+2021/07/15 07:00:28 resp:&{ResCode:0 Data:{EndMilliseconds:59999}}
+2021/07/15 07:00:28 --------------------------------------------------
+2021/07/15 07:00:28 WAIT VERIFY CODE:
+2021/07/15 07:00:33 YOUR VERIFY CODE:373468
+2021/07/15 07:00:33 PRODUCT ORDERED!
+2021/07/15 07:00:33 EXIST...

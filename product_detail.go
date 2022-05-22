@@ -106,11 +106,11 @@ func getProductDetail(sd *SessionData, dutyDate string) (candidates []*ProductDe
 			}
 		}
 	}
-	if len(afternoonDetails) > 0 {
-		addCandidates(afternoonDetails)
-	}
 	if len(morningDetails) > 0 {
 		addCandidates(morningDetails)
+	}
+	if len(afternoonDetails) > 0 {
+		addCandidates(afternoonDetails)
 	}
 	for _, details := range otherDetails {
 		addCandidates(details)
